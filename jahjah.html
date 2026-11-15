@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Prettiest, Jahjah 💖</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fcf9f9;
+  color: #333;
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* HEADER / NAV */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  background: #b606a4;
+}
+
+nav button {
+  background: #f8c7f4;
+  border: 1px solid #fff;
+  color: #600000;
+  padding: 12px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+nav button.active,
+nav button:hover {
+  background: #fff;
+  color: #600000;
+}
+
+/* SECTIONS */
+section {
+  display: none;
+  padding: 80px 20px;
+  animation: fade 0.8s ease;
+}
+
+section.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEART BACKGROUND */
+.heart-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  color: #9e0310;
+  font-size: 60px;
+  animation: float 7s infinite ease-in;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 0; }
+  to { transform: translateY(-10vh); opacity: 1; }
+}
+
+/* MEMORIES */
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.memories-grid img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* GALLERY */
+.carousel-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+video {
+  width: 250px;
+  border-radius: 12px;
+}
+
+/* REASONS */
+.reasons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.reason-box {
+  background: #f8c7f4;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 14px;
+  color: #600000;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reason-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer {
+  padding: 40px;
+  color: #777;
+  font-size: 22px;
+}
+
+/* HOME SECTION FONTS */
+#home h1 {
+  font-size: 50px;
+}
+
+#home p {
+  font-size: 22px;
+}
+
+#home blockquote {
+  font-size: 20px;
+}
+
+/* VIDEO CAROUSEL */
+.video-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+/* Center the video */
+.carousel-inner {
+  width: 70%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Video */
+.carousel-inner iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  display: none;
+}
+
+/* Buttons – REMOVED FROM FLOW */
+.video-carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #e07abf;
+  border: none;
+  color: white;
+  font-size: 26px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* Left & Right */
+.video-carousel .prev {
+  left: -70px;
+}
+
+.video-carousel .next {
+  right: -70px;
+}
+
+.video-carousel button:hover {
+  background: #c2185b;
+}
+
+</style>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+window.onload = () => {
+  document.querySelector("nav button").click();
+};
+</script>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+<div class="heart-bg">
+  <span class="heart" style="left:10%">♥</span>
+  <span class="heart" style="left:30%">♥</span>
+  <span class="heart" style="left:50%">♥</span>
+  <span class="heart" style="left:70%">♥</span>
+  <span class="heart" style="left:90%">♥</span>
+</div>
+
+<!-- HEADER -->
+<nav>
+  <button onclick="showSection('home', this)">Home</button>
+  <button onclick="showSection('memories', this)">Memories</button>
+  <button onclick="showSection('gallery', this)">Gallery</button>
+  <button onclick="showSection('message', this)">Message</button>
+<button onclick="showSection('reasons', this)">Reasons</button>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <h1>Welcome, Jahjah! 💖</h1>
+  <p>This website is for our memories we spent together.</p>
+
+  <blockquote style="margin-top:100px; font-style:italic; color:#c2185b;">
+    “Being deeply loved by someone gives you strength, while loving someone deeply gives you courage.” 💖
+  </blockquote>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+  <h1>Our Memories 🩷</h1>
+  <div class="memories-grid">
+    <img src="jahjah1.JPG">
+    <img src="jahjah2.JPG">
+    <img src="jahjah3.JPG">
+    <img src="jahjah4.JPG"> 
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h1>Gallery 🌷</h1>
+<div class="video-carousel">
+  <button class="prev" onclick="prevVideo()">❮</button>
+
+  <div class="carousel-inner">
+    <iframe
+    <iframe src="https://drive.google.com/file/d/1oI_jvYCQY4RpuyCH5zUUXJna-ueOKhiu/preview" width="100%" height="500" allow="autoplay" allowfullscreen></iframe>
+    <iframe src="https://drive.google.com/file/d/1HUyGUC20y87B0BruCd8gaM6njZHpWr6I/preview" width="100%" height="500" allow="autoplay" allowfullscreen></iframe>
+    <iframe src="https://drive.google.com/file/d/1lpdyplYeW4uNU83UNwUKBdlWRqzDD3Lq/preview" width="100%" height="500" allow="autoplay" allowfullscreen></iframe>
+    <iframe src="https://drive.google.com/file/d/1RU5nPFgDAOrl7a9PW3NPqdXb2HuSVIxb/preview" width="100%" height="500" allow="autoplay" allowfullscreen></iframe>
+    <iframe src="https://drive.google.com/file/d/1ymuNaHiTM6JrcW207rebm4pLxRl1DTc-/preview" width="100%" height="500" allow="autoplay" allowfullscreen></iframe>
+    <iframe src="https://drive.google.com/file/d/1b_v4nziWZfoE9NKIJx7I1g3SqYyaEJPI/preview" width="100%" height="500" allow="autoplay" allowfullscreen></iframe>
+  </div>
+
+  <button class="next" onclick="nextVideo()">❯</button>
+</div>
+
+</section>
+
+<!-- MESSAGE -->
+<section id="message">
+  <h1>Message 💌</h1>
+  <p style="max-width:700px; margin:40px auto; line-height:1.8;">
+I may not be the perfect person, and I may not always know the right words to say, but one thing I can promise you is that my intentions will always be genuine. Alam kong nasabi ko na 'yan sa'yo ilang beses at hayaan mo nalang na ako mismo ang magpatunay at kung paano ko ipaparamdam sa'yo 'yon.
+
+Araw - araw kitang pipiliin, even on days when things aren't easy. I promise to listen when you need someone to hear you, to understand you when things get difficult, and to support you as you chase your dreams. I promise to appreciate the little things you do, remember the little details about you, and never take your presence in my life for granted.
+
+Hindi ko man maipangako na magiging perpekto araw araw o kahit magkaintindihan. Pero gusto ko lang din malaman mo na kapag dumating ang lahat ng 'yon ay maaasahan mong nasa tabi mo 'ko palagi at hinding hindi ka babalewalain. I'll always try to communicate, learn, grow, at maging maayos na version ng sarili ko para sa'yo.
+
+At, kung may isang bagay man ako na gustong ipaalala ayun ay ang hindi ko lang gusto gumawa ng mga magagandang memories kasama ka, gusto kong gawin 'yon kasama ka araw-araw.
+
+Araw - araw kitang pipiliin at mamahalin, Alyjah Gemaikah Go, My Jahjah.
+  </p>
+</section>
+
+<!-- REASONS -->
+<section id="reasons">
+  <h1>8 Reasons Why I Love You 💖</h1>
+  <div class="reasons-container">
+    <!-- Example boxes -->
+    <div class="reason-box">Reason 1: You make time for me</div>
+    <div class="reason-box">Reason 2: You make ordinary days feel special</div>
+    <div class="reason-box">Reason 3: You always listen to me</div>
+    <div class="reason-box">Reason 4: You understand me even when I can’t explain</div>
+    <div class="reason-box">Reason 5: You accept me as I am</div>
+    <div class="reason-box">Reason 6: You believe in me when I doubt myself</div>
+    <div class="reason-box">Reason 7: You’re patient with me</div>
+    <div class="reason-box">Reason 8: You support my dreams</div>
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    <!-- Repeat up to 100 -->
+  </div>
+</section>
+
+<footer>
+  <p>Forever and Always, Yours 💕</p>
+</footer>
+
+<!-- Video carousel script -->
+<script>
+let currentVideo = 0;
+const videos = document.querySelectorAll('.carousel-inner iframe');
+
+function showVideo(index) {
+  videos.forEach(v => v.style.display = 'none'); // hide all
+  videos[index].style.display = 'block';        // show current
+}
+
+// Initial display
+showVideo(currentVideo);
+
+function nextVideo() {
+  currentVideo = (currentVideo + 1) % videos.length;
+  showVideo(currentVideo);
+}
+
+function prevVideo() {
+  currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+  showVideo(currentVideo);
+}
+</script>
+
+</body>
+</html>
